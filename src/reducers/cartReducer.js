@@ -13,7 +13,6 @@ export const cartReducer = (state = initialState, action ) => {
             }
         }
         case HIDE_BACKDROP : {
-            console.log(state.showBackdrop)
             return {
                 ...state,
                 showBackdrop: false
