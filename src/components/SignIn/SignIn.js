@@ -44,7 +44,7 @@ const SignIn = () => {
                 </Card>
                 {/* eslint-disable-next-line no-restricted-globals */}
                 <div className="w-100 text-center mt-2 pe ">
-                   <Link to={'/signUp'}><span className="btn redirect"> Зарегистрировать аккаунт</span></Link>
+                   <Link to={'/signUp'}><span className="btn"> Зарегистрировать аккаунт</span></Link>
                 </div>
             </div>
         </Container>
