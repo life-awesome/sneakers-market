@@ -1,0 +1,27 @@
+@import './components/MainPage/MainPage.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #E5E5E5;
+}
+
+.redirect {
+  transform: translateY(10px);
+
+  &:hover {
+    transition: all 0.8s ease-in;
+  }
+}
