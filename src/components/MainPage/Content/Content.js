@@ -1,13 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import {connect} from "react-redux";
+import {changeStatusSneaker} from "../../../actions/ChangeSneakerToCart";
+import {changeFavoriteSneaker} from "../../../actions/ChangeFavoriteSneaker";
 
-const Content = () => {
-    const [sneakers, setSneakers] = useState([])
+const Content = ({sneakers, addToCart, addToFavorite}) => {
     const [search, setSearch] = useState('')
-    useEffect(() => {
-        fetch('https://61b5c91a0e84b70017331bd2.mockapi.io/sneakers')
-            .then(response => response.json())
-            .then(data => setSneakers(data))
-    }, [])
     return (
         <>
             <div className="d-flex justify-content-between mt-5">
@@ -26,6 +23,10 @@ const Content = () => {
                             return (
                                 <div className="card-sneaker" key={index}>
                                     <div>
+                                        {obj.favorite ?
+                                            <i className="fas fa-heart like liked" onClick={() => addToFavorite(obj.id)}></i>
+                                            :
+                                            <i className="far fa-heart like" onClick={() => addToFavorite(obj.id)}></i>}
                                         <img src={obj.src} alt="sneakers"/>
                                         <p>{obj.name}</p>
                                         <div
@@ -35,7 +36,8 @@ const Content = () => {
                                                 <p><strong>{obj.price}</strong></p>
                                             </div>
                                             <div>
-                                                <img src="/images/plus.svg" alt="plus" className="plus"/>
+                                                <img src={obj.status ? '/images/addCart.svg' : "/images/plus.svg"}
+                                                     alt="plus" className="plus" onClick={() => addToCart(obj.id)}/>
                                             </div>
                                         </div>
                                     </div>
@@ -47,4 +49,15 @@ const Content = () => {
         </>
     )
 }
-export default Content
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (id) => dispatch(changeStatusSneaker(id)),
+        addToFavorite : (id) => dispatch(changeFavoriteSneaker(id))
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        sneakers: state.sneakers
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Content)
