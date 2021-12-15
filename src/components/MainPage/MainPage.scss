@@ -92,7 +92,8 @@ nav {
     }
   }
 }
-.hide{
+
+.hide {
   display: none;
 }
 
@@ -110,8 +111,17 @@ nav {
   }
 
   .cart {
+    position: relative;
     width: 25%;
     background-color: #fff;
+  }
+
+  .clear-box-description {
+    width: 60%;
+    margin-left: 90px;
+    & p{
+      color: #ccc;
+    }
   }
 }
 

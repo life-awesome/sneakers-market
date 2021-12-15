@@ -2,17 +2,50 @@
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 14px;
-  & .sneaker-descr{
+
+  & .sneaker-descr {
     width: 50%;
   }
-  & img{
+
+  & img {
     width: 80px;
     height: 80px;
   }
-  & .cross{
+
+  & .cross {
     border: 1px solid #DBDBDB;
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
+  }
+}
+
+.clear-box {
+  position: absolute;
+  top: 27%;
+  left: 2%;
+  text-align: center;
+}
+
+.create-order {
+  position: absolute;
+  bottom: 30px;
+  left: 20%;
+}
+
+.backdrop-btn {
+  border-radius: 20px;
+  padding: 16px 70px;
+  background-color: #9DD458;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+
+  & img {
+    position: absolute;
+    top: 37%;
+    left: 10%;
   }
 }
