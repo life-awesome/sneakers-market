@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {changeStatusSneaker} from "../../../actions/ChangeSneakerToCart";
 import {changeFavoriteSneaker} from "../../../actions/ChangeFavoriteSneaker";
+import {fetchSneakers} from "../../../actions/async/asyncAddAllSneakers";
 
-const Content = ({sneakers, addToCart, addToFavorite}) => {
+const Content = ({sneakers, addToCart, addToFavorite, getSneakers}) => {
     const [search, setSearch] = useState('')
+    useEffect(() => {
+        getSneakers()
+    }, [getSneakers])
     return (
         <>
             <div className="d-flex justify-content-between mt-5">
@@ -52,7 +56,8 @@ const Content = ({sneakers, addToCart, addToFavorite}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (id) => dispatch(changeStatusSneaker(id)),
-        addToFavorite : (id) => dispatch(changeFavoriteSneaker(id))
+        addToFavorite : (id) => dispatch(changeFavoriteSneaker(id)),
+        getSneakers : () => dispatch(fetchSneakers())
     }
 }
 const mapStateToProps = (state) => {
